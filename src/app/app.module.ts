@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';  
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -7,14 +8,20 @@ import {TopBarComponent} from './top-bar/top-bar.component';
 import { RouterModule } from '@angular/router';
 import {ProductListComponent} from './product-list/product-list.component';
 import { ProductAlertComponent } from './product-alert/product-alert.component';
-import {ProductDetailsComponent} from './product-details/product.details.component'
+import {ProductDetailsComponent} from './product-details/product.details.component';
+import {CartComponent} from './cart/cart.component';
+import { HttpClientModule } from '@angular/common/http';
+import {ShippingComponent} from './shipping/shipping.component';
 @NgModule({
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    HttpClientModule,
+    // ReactiveFormsModule,
     RouterModule.forRoot([
-      {path:'',component:ProductListComponent},
-      {path:'products/:productId',component:ProductDetailsComponent}
+      { path: '', component: ProductListComponent },
+      { path: 'products/:productId', component: ProductDetailsComponent },
+      { path: 'cart', component: CartComponent },
+      { path: 'shipping', component: ShippingComponent },
     ])
   ],
   declarations: [
@@ -22,8 +29,12 @@ import {ProductDetailsComponent} from './product-details/product.details.compone
     TopBarComponent,
     ProductListComponent,
     ProductAlertComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    CartComponent,
+    ShippingComponent
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }
